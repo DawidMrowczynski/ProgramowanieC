@@ -5,43 +5,43 @@ typedef struct
 {
     int x;
     int y;
-} point;
+} Point;
 
 typedef struct
 {
-    point x1;
-    point x2;
-    point x3;
-    point x4;
-} rect;
+    Point x1;
+    Point x2;
+    Point x3;
+    Point x4;
+} Rectangle;
 
-void rectValues(rect r);
-void move(point *p);
+void rectValues(Rectangle r);
+void move(Point *p);
 
 int main()
 {
-   point p = {3, 4};
+   Point p = {3, 4};
    move(&p);
    printf("Moved x: %i\n", p.x);
    printf("Moved y: %i\n", p.y);
    
-   point p1 = {3, 4};
-   point p2 = {7, 4};
-   point p3 = {3, 1};
-   point p4 = {7, 1};
+   Point p1 = {3, 4};
+   Point p2 = {7, 4};
+   Point p3 = {3, 1};
+   Point p4 = {7, 1};
    
-   rect r = {p1, p2, p3, p4};
+   Rectangle r = {p1, p2, p3, p4};
    rectValues(r);
    
 }
 
-void move(point *p)
+void move(Point *p)
 {
     p->x++;
     p->y++;
 }
 
-void rectValues(rect r)
+void rectValues(Rectangle r)
 {
     //wyliczam boki figury
     int a = abs(r.x1.x - r.x2.x);
