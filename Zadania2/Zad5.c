@@ -2,8 +2,8 @@
 #include <string.h>
 
 #define MAX 100
-int FREE_SPACE = -1;
-int TAKEN[100];
+int FREE_SPACE = -1; // do sprawdzenie czy jest jeszcze miejsce
+int TAKEN[100];  // zachowuje informacje czy pod danym indeksem jest kontakt czy jest on pusty
 
 typedef struct
 {
@@ -69,18 +69,20 @@ int main()
 
 void add(Contact *contactArray)
 {
+    FREE_SPACE = -1;
+    //znajduje wolne miejsce
     for (int i = 0; i < MAX; i++)
     {
-        if (contactArray[i].name[0] == '\0')
+        if (TAKEN[i] != 1)
         {
             FREE_SPACE = i;
             break;
         }
     }
-
+    //jesli nie znalazlo
     if (FREE_SPACE == -1)
     {
-        printf("Contact has no more space!");
+        printf("Contact has no more space! Contact won't be added!\n");
     }
     
     char name[20];
@@ -99,10 +101,11 @@ void add(Contact *contactArray)
     strcpy(add.name, name);
     strcpy(add.lastName, lastName);
     strcpy(add.num, num);
-    contactArray[FREE_SPACE] = add;
-    TAKEN[FREE_SPACE] = 1;
-    FREE_SPACE++;
-    
+    if (FREE_SPACE != -1)
+    {
+        contactArray[FREE_SPACE] = add;
+        TAKEN[FREE_SPACE] = 1; 
+    }  
 }
 
 void search(Contact *contactArray, char *lastName)
