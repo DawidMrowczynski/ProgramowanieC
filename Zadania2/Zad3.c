@@ -46,8 +46,6 @@ void rectValues(Rectangle r)
     //wyliczam boki figury
     int a = abs(r.x1.x - r.x2.x);
     int b = abs(r.x1.y - r.x3.y);
-    int c = abs(r.x2.y - r.x4.y);
-    int d = abs(r.x3.x - r.x4.x);
-    printf("Circuit: %i\n", a+b+c+d); //obwod
+    printf("Circuit: %i\n", a*2+b*2); //obwod
     printf("Area: %i\n", a*b); //pole
 }
