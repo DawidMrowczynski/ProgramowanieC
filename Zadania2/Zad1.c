@@ -9,7 +9,7 @@ int main()
     
     *pointer = 5;
     
-    printf("x changed: %i\n", x);
+    printf("x changedd: %i\n", x);
 
     return 0;
 }
