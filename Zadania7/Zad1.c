@@ -42,8 +42,8 @@ int decode(char *line)
     int count = 0;
     char numbers[MAX_NUMBERS][MAX_DIGITS]; 
 
-    char* wordToFind[] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
-    int numWordsToFind = sizeof(wordToFind) / sizeof(wordToFind[0]);
+    char* words[] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+    int number_of_words = sizeof(words) / sizeof(words[0]);
 
     // Przeszukiwanie ciągu znaków, by znaleźć podciągi lub cyfry
     for (int i = 0; i < strlen(line); i++) 
@@ -57,12 +57,12 @@ int decode(char *line)
         }
         else 
         {
-            for (int j = 0; j < numWordsToFind; j++) 
+            for (int j = 0; j < number_of_words; j++) 
             {
-                if (strncmp(&line[i], wordToFind[j], strlen(wordToFind[j])) == 0) 
+                if (strncmp(&line[i], words[j], strlen(words[j])) == 0) 
                 {
-                    strncpy(numbers[count], &line[i], strlen(wordToFind[j])); 
-                    numbers[count][strlen(wordToFind[j])] = '\0';
+                    strncpy(numbers[count], &line[i], strlen(words[j])); 
+                    numbers[count][strlen(words[j])] = '\0';
                     count++;
                     i++; 
                     break;
@@ -75,12 +75,12 @@ int decode(char *line)
 
 int convert_to_int(char *number) // zamiana slownych liczb na int
 {
-    char* wordToConvert[] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
-    int numWords = sizeof(wordToConvert) / sizeof(wordToConvert[0]);
+    char* words[] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+    int number_of_words = sizeof(words) / sizeof(words[0]);
     
-    for (int i = 0; i < numWords; ++i) 
+    for (int i = 0; i < number_of_words; ++i) 
     {
-        if (strcmp(number, wordToConvert[i]) == 0) 
+        if (strcmp(number, words[i]) == 0) 
         {
             return i; 
         }
